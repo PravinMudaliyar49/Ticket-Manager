@@ -49,6 +49,7 @@ body {
     width: 2.5rem;
     border-radius: 2px;
     background-color: lightsalmon;
+    cursor: pointer;
 }
 
 .lightpink {
@@ -109,6 +110,7 @@ body {
 .priority-color {
     height: 3rem;
     width: 55%;
+    cursor: pointer;
 }
 
 .border {
@@ -127,7 +129,6 @@ body {
 
 .ticket-color {
     height: 1rem;
-    background-color: black;
     margin: 0.1rem;
 }
 
@@ -146,5 +147,5 @@ body {
     flex-wrap: wrap;
     justify-content: space-around;
     justify-content: center;
-    
+
 }
