@@ -118,18 +118,19 @@ body {
 }
 
 .ticket-cont {
-    height: 12rem;
+    height: 13rem;
     width: 16rem;
     background-color: #f7f1e3;
     margin: 0.4rem;
     border-radius: 0.5rem;
-    cursor: pointer;
-    user-select: none;
+    cursor: text;
+    /* user-select: none; */
 }
 
 .ticket-color {
     height: 1rem;
     margin: 0.1rem;
+    cursor: pointer;
 }
 
 .ticket-id {
@@ -138,8 +139,19 @@ body {
 }
 
 .task-area {
-    height: calc(100% - 3rem);
+    height: calc(100% - 1rem - 2rem - 2rem);
     padding: 0.4rem;
+    outline: none;
+}
+
+.ticket-lock {
+    height: 2rem;
+    font-size: 1.5rem;
+    padding-right: 0.5rem;
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+    color: #ffdd59;
 }
 
 .main-cont {
