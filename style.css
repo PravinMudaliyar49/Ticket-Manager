@@ -30,7 +30,7 @@ body {
 
 .action-btn-cont {
     height: 3rem;
-    width: 8rem;
+    width: 6rem;
     display: flex;
     background-color: #3d3d3d;
 }
@@ -84,6 +84,7 @@ body {
     position: absolute;
     top: calc((100vh - 50vh) / 2);
     left: calc((100vw - 45vw) / 2);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .textarea-cont {
@@ -159,5 +160,44 @@ body {
     flex-wrap: wrap;
     justify-content: space-around;
     justify-content: center;
+
+}
+
+@media screen and (min-width: 425px) and (max-width: 768px) {
+    .modal-cont {
+        height: 50vh;
+        width: 60vw;
+        left: calc((100vw - 60vw) / 2);
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .modal-cont {
+        width: 75vw;
+        height: 55vh;
+        top: calc((100vh - 55vh) / 2);
+        left: calc((100vw - 75vw) / 2);
+        flex-direction: column;
+    }
+
+    .textarea-cont {
+        height: 75%;
+        width: 100%;
+    }
+
+    .priority-colors-cont {
+        flex-direction: row;
+        width: 100%;
+        height: 25%;
+    }
+
+    .priority-color {
+        width: 17%;
+    }
+
+    .toolbox-cont>* {
+        margin-left: 2rem;
+        border-radius: 2px;
+    }
 
 }
