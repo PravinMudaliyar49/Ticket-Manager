@@ -14,7 +14,7 @@ let addModal = true;
 let removeFlag = false;
 
 let lockClass = "fa-lock";
-let unLockClass = "fa-unlock"
+let unLockClass = "fa-lock-open"
 
 let colors = ["lightpink", "lightblue", "lightgreen", "black"];
 let modalPriorityColor = colors[colors.length - 1];
@@ -31,10 +31,10 @@ if(localStorage.getItem("jira_tickets")){
 allPriorityColors.forEach((colorElem, idx) => {
     colorElem.addEventListener("click", (event) => {
         allPriorityColors.forEach((priorityColorEle, idx) => {
-            priorityColorEle.classList.remove("border");
+            priorityColorEle.classList.remove("border-red");
         });
 
-        colorElem.classList.add("border");
+        colorElem.classList.add("border-red");
 
         modalPriorityColor = colorElem.classList[0];
 
@@ -47,8 +47,10 @@ addBtn.addEventListener("click", (event) => {
 
     if (addModal) {
         modalCont.style.display = "flex";
+        addBtn.classList.add("border-pink");
     } else {
         modalCont.style.display = "none";
+        addBtn.classList.remove("border-pink");
     }
 
     addModal = !addModal;
@@ -56,6 +58,13 @@ addBtn.addEventListener("click", (event) => {
 
 removeBtn.addEventListener("click", (event) => {
     removeFlag = !removeFlag;
+
+    if(removeFlag){
+        removeBtn.classList.add("border-pink");
+    }else{
+        removeBtn.classList.remove("border-pink");
+    }
+
 });
 
 modalCont.addEventListener("keydown", (event) => {
@@ -69,6 +78,13 @@ modalCont.addEventListener("keydown", (event) => {
 
 toolBoxColors.forEach((colorElem) => {
     colorElem.addEventListener("click", (event) => {
+
+        toolBoxColors.forEach((colors) => {
+            colors.classList.remove("border-yellow");
+        });
+
+        colorElem.classList.add("border-yellow");
+        
         let color = colorElem.classList[0];
 
         let filteredTickets = ticketsArr.filter((ticketObj) => {
@@ -89,6 +105,10 @@ toolBoxColors.forEach((colorElem) => {
     });
 
     colorElem.addEventListener("dblclick", (event) => {
+        toolBoxColors.forEach((colors) => {
+            colors.classList.remove("border-yellow");
+        });
+        
         //Re-add all the tickets.
         let allTicketsCont = document.querySelectorAll(".ticket-cont");
         allTicketsCont.forEach((ticket) => {
@@ -122,8 +142,10 @@ function createTicket(ticketColor, ticketTask, ticketId) {
     
     //Create object of the ticket and add it to the array.
     if (!ticketId) {
+        ticketId = id;
         ticketsArr.push({
-            ticketColor, ticketTask, ticketId: id
+            // ticketColor, ticketTask, ticketId: id
+            ticketColor, ticketTask, ticketId
         });
         
         localStorage.setItem("jira_tickets", JSON.stringify(ticketsArr));
@@ -194,7 +216,7 @@ function handleColor(ticket, id) {
         ticketColor.classList.add(newColor);
 
         //Update the change in priority_color... in the local_storage.
-        ticketsArr[ticketIdx].color = newColor;
+        ticketsArr[ticketIdx].ticketColor = newColor;
         localStorage.setItem("jira_tickets", JSON.stringify(ticketsArr)); 
 
     });
@@ -211,12 +233,13 @@ function getTicketIdx(id){
 function setModalToDefault() {
     modalCont.style.display = "none";
     taskAreaCont.value = "";
+    addBtn.classList.remove("border-pink");
     modalPriorityColor = colors[colors.length - 1];
     allPriorityColors.forEach((priorityColorEle, idx) => {
-        priorityColorEle.classList.remove("border");
+        priorityColorEle.classList.remove("border-red");
     });
 
-    allPriorityColors[allPriorityColors.length - 1].classList.add("border");
+    allPriorityColors[allPriorityColors.length - 1].classList.add("border-red");
 
 }
 

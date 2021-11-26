@@ -114,8 +114,16 @@ body {
     cursor: pointer;
 }
 
-.border {
+.border-red {
     border: 5px solid red;
+}
+
+.border-pink {
+    border: 5px solid #f368e0;
+}
+
+.border-yellow {
+    border: 5px solid #EAB543;
 }
 
 .ticket-cont {
@@ -124,8 +132,12 @@ body {
     background-color: #f7f1e3;
     margin: 0.4rem;
     border-radius: 0.5rem;
-    cursor: text;
-    /* user-select: none; */
+    /* cursor: text; */
+    user-select: none;
+}
+
+.ticket-cont:hover{
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
 
 .ticket-color {
@@ -152,7 +164,7 @@ body {
     display: flex;
     justify-content: flex-end;
     cursor: pointer;
-    color: #ffdd59;
+    color: #84817a;
 }
 
 .main-cont {
@@ -183,6 +195,8 @@ body {
     .textarea-cont {
         height: 75%;
         width: 100%;
+        font-size: 1rem;
+        padding: 1rem;
     }
 
     .priority-colors-cont {
